@@ -49,14 +49,17 @@ def produce_y_grad(input_img):
 
 def produce_overall_grad(input_img):
     x_grad = produce_x_grad(input_img)
-    print('finished x grad')
+
     y_grad = produce_y_grad(input_img)
-    print('finished y grad')
+
 
     return (x_grad**2+y_grad**2)**0.5
 
 def main():
     my_file = easygui.fileopenbox()
+
+    assert my_file.endswith('.png') or my_file.endswith('.jpg'),'please select a .jpg or .png image file'
+
     my_img = io.imread(my_file, as_gray=True)
 
     x_size, y_size = my_img.shape
@@ -71,7 +74,6 @@ def main():
     x_grad = exposure.equalize_hist(produce_x_grad(my_img))
     y_grad = exposure.equalize_hist(produce_y_grad(my_img))
     overall_grad_img = exposure.equalize_hist(produce_overall_grad(my_img))
-    print('finished overall_grad')
 
     output_img = np.empty(my_img.shape)
 

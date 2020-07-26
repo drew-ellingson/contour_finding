@@ -8,4 +8,5 @@ exclude=
     bin/
     lib/
     include/
+    share/
 max-line-length = 88

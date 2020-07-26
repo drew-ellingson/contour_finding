@@ -1,0 +1,11 @@
+# virtualenv artifacts
+bin/
+include/
+lib/
+share/
+
+# Python artifacts
+.Python
+
+# Mac OS Artifacts
+*/.DS_Store

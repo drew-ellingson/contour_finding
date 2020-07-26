@@ -3,7 +3,7 @@ from skimage import io, viewer, exposure
 from skimage.transform import resize
 import easygui
 import math
-
+import os
 
 def convolution_zoom_in(img_matrix, mask_matrix):
     """ convolution calculation at one matrix entry given a mask"""
@@ -59,9 +59,9 @@ def produce_overall_grad(input_img):
     return (x_grad**2+y_grad**2)**0.5
 
 
-def main():
+def display_contours():
     """pick an image, resize for easy computation, display original vs contour"""
-    my_file = easygui.fileopenbox()
+    my_file = easygui.fileopenbox(default=os.getcwd(), filetypes=['*.png', '*.jpg'])
 
     assert my_file.endswith('.png') or my_file.endswith('.jpg'), 'please select a .jpg or .png image file'
 
@@ -89,4 +89,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    display_contours()
